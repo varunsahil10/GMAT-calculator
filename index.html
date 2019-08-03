@@ -18,38 +18,73 @@
 	}
 
 	.curr-score {width: 50%; background-color: #0fa2eb;}
-	.need {width: 10%; background-color: #ffe28a;}
+	.need {width: 30%; background-color: #ffe28a;}
 	
 </style>
 </head>
 <body>
 
 	<h1>My Skills</h1>
+	<form> 
+		Current : <input type="text" id="quant_curr" maxlength="2" size="2" />
+		Target : <input type="text" id="quant_target" maxlength="2" size="2" />
+		<br><br>
+		Current : <input type="text" id="verbal_curr" maxlength="2"/ size="2">
+		Target : <input type="text" id="verbal_target" maxlength="2" size="2" />
+		<br><br>
+		<input type="button" onClick="showResult()" Value="Submit" 
+		title="Click here to find the score." />  
+	</form>
+	<br>
+	<!--
 	<form>
-		quant
+		<div style="display: inline-flex;">
 		<div>
-		<label>Current</label>
-		<input type="text" name="quant-curr">
-		<label>Target</label>
-		<input type="text" name="quant-curr">
+			<h3>Quant</h3>
+				<label>Current</label>
+				<input type="number" id="quant_curr" valid>
+				<label>Target</label>
+				<input type="number" id="quant_target" valid>
 		</div>
-		quant
 		<div>
-		<label>Current</label>
-		<input type="text" name="quant-curr">
-		<label>Target</label>
-		<input type="text" name="quant-curr">
+			<h3>Verbal</h3>
+			<label>Current</label>
+			<input type="number" id="verbal-curr">
+			<label>Target</label>
+			<input type="number" id="verbal-target">
 		</div>
-	  <button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+		<br>
+	  <button type="submit" class="btn btn-primary" id="submit">Submit</button>
 
 	</form>
-	<p>HTML</p>
-	<div class="fullbar" style="display: inline-flex;">
-	  <div class="curr-score" id="score"></div>
-	  <div class="skills need" id="need">10%</div>
+	-->
+	<div>
+		<div class="fullbar" style="display: inline-flex;">
+		  <div class="curr-score" id="score"></div>
+		  <div class="skills need" id="need"></div>
+		</div>
 	</div>
+	<p id="result"></p>
+</body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script>
+ 
+	function showResult() {
+		quant_curr = document.getElementById("quant_curr").value; 
+		quant_target = document.getElementById("quant_target").value;
+		verbal_curr = document.getElementById("verbal_curr").value; 
+		verbal_target = document.getElementById("verbal_target").value;
+		//result = Number(quant_target) - Number(quant_curr); 
+ 		total_curr = 200 + (quant_curr + verbal_curr)*5;
+ 		total_target = 200 + (quant_target + verbal_target)*5;
+ 		total_need = total_target - total_curr;
+		document.getElementById("need").innerHTML = total_need;
+
+	}
 
 	
+</script>
 
-</body>
 </html>
